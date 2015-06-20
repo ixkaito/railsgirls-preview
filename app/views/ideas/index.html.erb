@@ -5,8 +5,7 @@
   <div class="row">
     <% group.compact.each do |idea| %>
       <div class="col-md-12">
-        <%= image_tag idea.picture_url if idea.picture.present? %>
-        <h2><%= link_to idea.name, idea %></h2>
+        <h2><%= image_tag idea.picture_url(:thumb) if idea.picture? %> <%= link_to idea.name, idea %></h2>
         <p><%= idea.description %></p>
       </div>
     <% end %>
