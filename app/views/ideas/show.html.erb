@@ -1,30 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @idea.name %>
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <%= image_tag @idea.picture_url if @idea.picture.present? %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
+    <p><b>Name: </b><%= @idea.name %></p>
+    <p><b>Description: </b><%= @idea.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_idea_path(@idea), class: 'btn btn-primary' %>
+      <%= link_to 'Destroy', @idea, method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger' %>
+    </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @idea.picture_url if @idea.picture.present? %>
-</p>
-
-<h3>Comments</h3>
-<% @comments.each do |comment| %>
-  <div>
-    <strong><%= comment.user_name %></strong>
-    <br />
-    <p><%= comment.body %></p>
-    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
+    <h3>Comments</h3>
+    <% @comments.each do |comment| %>
+      <div>
+        <strong><%= comment.user_name %></strong>
+        <br />
+        <p><%= comment.body %></p>
+        <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
+      </div>
+    <% end %>
+    <%= render 'comments/form' %>
   </div>
-<% end %>
-<%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+</div>
