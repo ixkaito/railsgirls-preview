@@ -10,7 +10,9 @@
       <%= link_to 'Edit', edit_idea_path(@idea), class: 'btn btn-primary' %>
       <%= link_to 'Destroy', @idea, method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger' %>
     </p>
+  </div>
 
+  <div class="col-md-4">
     <h3>Comments</h3>
     <% @comments.each do |comment| %>
       <div>
